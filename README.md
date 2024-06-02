@@ -49,9 +49,19 @@ func main() {
 
 Fully compatible with the Blockstream API and partially compatible with the Mempool API. Note that some Mempool API endpoints are not yet supported.
 
+## Future Work
+
+We are actively working on expanding the compatibility and functionality of the `go-btc-api-client`. The planned features include:
+
+- Full support for all Mempool API endpoints.
+- Support for liquid 
+- Partial compatibility with btcd types,
+
+Stay tuned for updates and feel free to contribute to these enhancements!
+
 ## Contributing
 
-Contributions to the Ethereum Address Generator are welcome. Please feel free to fork the repository, make changes, and submit pull requests.
+Contributions to the go-btc-api-client are welcome. Please feel free to fork the repository, make changes, and submit pull requests.
 
 ## License
 
