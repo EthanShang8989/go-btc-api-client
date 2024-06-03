@@ -52,12 +52,13 @@ type Vin struct {
 }
 
 type Vout struct {
-	ScriptSig            string `json:"scriptsig,omitempty"`
-	ScriptSigAsm         string `json:"scriptsig_asm,omitempty"`
-	Scriptpubkey_type    string `json:"inner_redeemscript_asm,omitempty"`
-	Scriptpubkey_address string `json:"inner_witnessscript_asm,omitempty"`
-	Value                uint64 `json:"value"`
+	Scriptpubkey        string `json:"scriptpubkey,omitempty"`
+	ScriptpubkeyAsm     string `json:"scriptpubkey_asm,omitempty"`
+	ScriptpubkeyType    string `json:"scriptpubkey_type,omitempty"`
+	ScriptpubkeyAddress string `json:"scriptpubkey_address,omitempty"`
+	Value               uint64 `json:"value"`
 }
+
 type Status struct {
 	Confirmed   bool   `json:"confirmed"`
 	BlockHeight int    `json:"block_height"`
