@@ -4,6 +4,8 @@
 
 This repository is a client library that encapsulates HTTP requests to a third-party API. It provides a convenient interface for interacting with the API, specifically designed for querying and retrieving information from the Bitcoin blockchain. With this library, developers can easily integrate Bitcoin functionality into their applications by making HTTP requests to the API and accessing a wide range of features, including querying blockchain data, retrieving transaction details, checking account balances, and even sending Bitcoin transactions securely.
 
+**Note: This library is currently in an unstable version. Interfaces and types are subject to change as we continue to develop and improve the library.**
+
 ## Requirements
 
 - [Go](https://golang.org/) (Version 1.14 or later recommended)
