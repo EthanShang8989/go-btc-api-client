@@ -2,7 +2,7 @@ package btcclient
 
 const (
 	// Blockstream API
-	BlockstreamURL        = "https://blockstream.info/testnet/api"
+	BlockstreamURL        = "https://blockstream.info/api"
 	BlockstreamTestnetURL = "https://blockstream.info/testnet/api"
 
 	// Mempool API

@@ -28,19 +28,12 @@ import (
 )
 
 func main() {
-	// Create API client
-	client := btcclient.NewClient("https://blockstream.info/testnet/api/")
-
-	// Block hash
+	client := esplora.NewClient(btcclient.BlockstreamTestnetURL)
 	blockHash := "0000000010942ddf9a42bf4b987867badad7c86bce24d28b2bd5cc459ef64c81"
-
-	// Fetch all transactions in the block
-	transactions, err := client.GetAllBlockTransactions(blockHash)
+	transactions, err := client.GetBlockAllTransactions(blockHash)
 	if err != nil {
 		log.Fatalf("Failed to get transactions: %v", err)
 	}
-
-	// Print transaction information
 	for _, tx := range transactions {
 		fmt.Printf("Transaction ID: %s\n", tx.Txid)
 	}
