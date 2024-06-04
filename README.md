@@ -50,6 +50,7 @@ We are actively working on expanding the compatibility and functionality of the 
 
 - Full support for all Mempool API endpoints.
 - Support for liquid 
+- Support for mainstream third-party api 
 - Partial compatibility with btcd types,
 
 Stay tuned for updates and feel free to contribute to these enhancements!
