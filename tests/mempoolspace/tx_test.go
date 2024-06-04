@@ -1,4 +1,4 @@
-package tests
+package mempoolspace_test
 
 import (
 	"testing"

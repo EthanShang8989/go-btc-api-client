@@ -1,7 +1,7 @@
-package btcclient
+package esplora
 
 // GetFeeEstimates fetches fee estimates for different confirmation targets
-func (c *Client) GetFeeEstimates() (map[string]float64, error) {
+func (c *EsploraClient) GetFeeEstimates() (map[string]float64, error) {
 	var estimates map[string]float64
 	err := c.sendRequest("/fee-estimates", &estimates)
 	return estimates, err

@@ -1,4 +1,4 @@
-package tests
+package esplora_test
 
 import (
 	"testing"

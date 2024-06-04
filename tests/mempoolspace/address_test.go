@@ -1,24 +1,34 @@
-package tests
+package mempoolspace_test
 
 import (
 	"testing"
 
 	"github.com/davecgh/go-spew/spew"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestGetAddressInfo(t *testing.T) {
 	info, err := realClient.GetAddressInfo("tb1pau685khfkvselml6l5sqx2la7gfdal34szj37tyvm8rqp58244nqyszcm9")
 	assert.NoError(t, err)
 	assert.NotNil(t, info)
+	require.True(t, info.ChainStats.FundedTxoCount > 1)
 	// spew.Dump(info)
+}
+func TestGetAddressValidation(t *testing.T) {
+	info, err := realClient.GetAddressValidation("tb1pau685khfkvselml6l5sqx2la7gfdal34szj37tyvm8rqp58244nqyszcm9")
+	assert.NoError(t, err)
+	assert.NotNil(t, info)
+	require.True(t, info.IsWitness == true)
+	require.True(t, info.IsScript == true)
+	spew.Dump(info)
 }
 
 func TestGetScripthashInfo(t *testing.T) {
 	info, err := realClient.GetScripthashInfo("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855")
 	assert.NoError(t, err)
 	assert.NotNil(t, info)
-	// spew.Dump(info)
+	spew.Dump(info)
 }
 
 func TestGetAddressTxs(t *testing.T) {

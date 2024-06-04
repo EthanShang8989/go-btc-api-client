@@ -1,11 +1,11 @@
-package btcclient
+package general
 
 import (
 	"encoding/json"
 	"errors"
 )
 
-type BlockInfo struct {
+type BlockHeader struct {
 	ID                string  `json:"id"`
 	Height            uint64  `json:"height"`
 	Version           int     `json:"version"`
@@ -59,6 +59,7 @@ type Vout struct {
 	Value               uint64 `json:"value"`
 }
 
+// Status 表示tx或者utxo的状态
 type Status struct {
 	Confirmed   bool   `json:"confirmed"`
 	BlockHeight int    `json:"block_height"`

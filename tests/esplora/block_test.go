@@ -1,4 +1,4 @@
-package tests
+package esplora_test
 
 import (
 	"testing"
@@ -8,7 +8,7 @@ import (
 )
 
 func TestGetBlock(t *testing.T) {
-	block, err := realClient.GetBlockByhash("0000000000000002a0324be1eb5c7496a41251557086682f33b78a4440320fa8")
+	block, err := realClient.GetBlockHeaderByhash("0000000000000002a0324be1eb5c7496a41251557086682f33b78a4440320fa8")
 	assert.NoError(t, err)
 	spew.Dump(block)
 	assert.Equal(t, "0000000000000002a0324be1eb5c7496a41251557086682f33b78a4440320fa8", block.ID)
@@ -36,7 +36,7 @@ func TestGetBlockTransactions(t *testing.T) {
 }
 
 func TestGetBlockTxids(t *testing.T) {
-	txids, err := realClient.GetBlockTxids("0000000000000002a0324be1eb5c7496a41251557086682f33b78a4440320fa8")
+	txids, err := realClient.GetBlockAllTxids("0000000000000002a0324be1eb5c7496a41251557086682f33b78a4440320fa8")
 	assert.NoError(t, err)
 	assert.NotEmpty(t, txids)
 	spew.Dump(txids)
@@ -70,7 +70,7 @@ func TestGetBlockHashByHeight(t *testing.T) {
 }
 
 func TestGetNewestBlocks(t *testing.T) {
-	blocks, err := realClient.GetNewestBlocks()
+	blocks, err := realClient.GetRecentBlocks()
 	assert.NoError(t, err)
 	assert.NotEmpty(t, blocks)
 	spew.Dump(blocks)
