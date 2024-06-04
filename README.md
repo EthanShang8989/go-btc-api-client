@@ -24,7 +24,7 @@ package main
 import (
 	"fmt"
 	"log"
-	"github.com/EthanShang8989/go-btc-api-client/btcclient"
+	"github.com/EthanShang8989/go-btc-api-client/btcclient/esplora"
 )
 
 func main() {
@@ -49,7 +49,6 @@ Fully compatible with the Blockstream API and partially compatible with the Memp
 We are actively working on expanding the compatibility and functionality of the `go-btc-api-client`. The planned features include:
 
 - Full support for all Mempool API endpoints.
-- Support for liquid 
 - Support for mainstream third-party api 
 - Partial compatibility with btcd types,
 
