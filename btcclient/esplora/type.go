@@ -133,3 +133,68 @@ type MerkleProof struct {
 	Merkle      []string `json:"merkle"`
 	Pos         int      `json:"pos"`
 }
+
+// UserIssuedAsset represents an asset in the Liquid network.
+type UserIssuedAsset struct {
+	AssetID         string               `json:"asset_id"`
+	IssuanceTxin    IssuanceTxin         `json:"issuance_txin,omitempty"`    //the issuance transaction input
+	IssuancePrevout IssuancePrevout      `json:"issuance_prevout,omitempty"` //the previous output spent for the issuance
+	ReissuanceToken string               `json:"reissuance_token"`           //the asset id of the reissuance token
+	ContractHash    string               `json:"contract_hash"`              //the contract hash committed as the issuance entropy
+	Status          Status               `json:"status"`                     //the confirmation status of the initial asset issuance transaction
+	ChainStats      UserIssuedAssetStats `json:"chain_stats"`
+	MempoolStats    UserIssuedAssetStats `json:"mempool_stats"`
+	Contract        Contract             `json:"contract"`
+	Entity          Entity               `json:"entity"`    //the entity linked to this asset.
+	Precision       int                  `json:"precision"` //the number of decimal places for units of this asset (defaults to 0)
+	Name            string               `json:"name"`      //a description for the asset (up to 255 characters)
+	Ticker          string               `json:"ticker"`    //a 3-5 characters ticker associated with the asset (optional)
+}
+
+type UserIssuedAssetStats struct {
+	TxCount                int   `json:"tx_count"`                 //the number of transactions associated with this asset (does not include confidential transactions)
+	IssuanceCount          int   `json:"issuance_count"`           //the number of (re)issuance transactions
+	IssuedAmount           int   `json:"issued_amount"`            //the number of (re)issuance transactions
+	BurnedAmount           int64 `json:"burned_amount"`            //the total amount provably burned
+	HasBlindedIssuances    bool  `json:"has_blinded_issuances"`    //whether at least one of the (re)issuances were blind
+	ReissuanceTokens       int   `json:"reissuance_tokens"`        //the number of reissuance tokens
+	BurnedReissuanceTokens int64 `json:"burned_reissuance_tokens"` //the number of reissuance tokens burned
+}
+
+type IssuanceTxin struct {
+	Txid string `json:"txid"`
+	Vin  int    `json:"vin"`
+}
+
+type IssuancePrevout struct {
+	Txid string `json:"txid"`
+	Vout int    `json:"vout"`
+}
+
+type Contract struct {
+	Entity       Entity `json:"entity"`
+	IssuerPubkey string `json:"issuer_pubkey"`
+	Name         string `json:"name"`
+	Precision    int    `json:"precision"`
+	Ticker       string `json:"ticker"`
+	Version      int    `json:"version"`
+}
+
+type Entity struct {
+	Domain string `json:"domain"`
+}
+
+type NativeAsset struct {
+	AssetID      string           `json:"asset_id"`
+	ChainStats   NativeAssetStats `json:"chain_stats"`
+	MempoolStats NativeAssetStats `json:"mempool_stats"`
+}
+type NativeAssetStats struct {
+	TxCount      int64 `json:"tx_count"`
+	PegInCount   int64 `json:"peg_in_count"`
+	PegInAmount  int64 `json:"peg_in_amount"`
+	PegOutAmount int64 `json:"peg_out_amount"`
+	PegOutCount  int64 `json:"peg_out_count"`
+	BurnCount    int64 `json:"burn_count"`
+	BurnedAmount int64 `json:"burned_amount"`
+}

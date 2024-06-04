@@ -6,3 +6,4 @@ import (
 )
 
 var realClient = esplora.NewClient(btcclient.MenpoolTestnetURL)
+var liquidClient = esplora.NewClient(btcclient.BlockstreamliquidTestnetURL)

@@ -7,14 +7,14 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestGetBlock(t *testing.T) {
+func TestGetBlockHeader(t *testing.T) {
 	block, err := realClient.GetBlockHeaderByhash("0000000000000002a0324be1eb5c7496a41251557086682f33b78a4440320fa8")
 	assert.NoError(t, err)
 	spew.Dump(block)
 	assert.Equal(t, "0000000000000002a0324be1eb5c7496a41251557086682f33b78a4440320fa8", block.ID)
 }
 
-func TestGetBlockHeader(t *testing.T) {
+func TestGetBlockHeaderHEX(t *testing.T) {
 	header, err := realClient.GetBlockHeaderHex("0000000000000002a0324be1eb5c7496a41251557086682f33b78a4440320fa8")
 	assert.NoError(t, err)
 	assert.NotEmpty(t, header)
