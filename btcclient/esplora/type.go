@@ -3,22 +3,24 @@ package esplora
 import (
 	"encoding/json"
 	"errors"
+
+	"github.com/btcsuite/btcd/chaincfg/chainhash"
 )
 
 type BlockHeader struct {
-	ID                string  `json:"id"`
-	Height            uint64  `json:"height"`
-	Version           int     `json:"version"`
-	Timestamp         int64   `json:"timestamp"`
-	Bits              int     `json:"bits"`
-	Nonce             int64   `json:"nonce"`
-	Difficulty        float64 `json:"difficulty"`
-	MerkleRoot        string  `json:"merkle_root"`
-	TxCount           uint64  `json:"tx_count"`
-	Size              int     `json:"size"`
-	Weight            int     `json:"weight"`
-	PreviousBlockHash string  `json:"previousblockhash"`
-	Mediantime        int64   `json:"mediantime"`
+	ID                string         `json:"id"`
+	Height            uint64         `json:"height"`
+	Version           int            `json:"version"`
+	Timestamp         int64          `json:"timestamp"`
+	Bits              int            `json:"bits"`
+	Nonce             int64          `json:"nonce"`
+	Difficulty        float64        `json:"difficulty"`
+	MerkleRoot        chainhash.Hash `json:"merkle_root"`
+	TxCount           uint64         `json:"tx_count"`
+	Size              int            `json:"size"`
+	Weight            int            `json:"weight"`
+	PreviousBlockHash chainhash.Hash `json:"previousblockhash"`
+	Mediantime        int64          `json:"mediantime"`
 }
 type BlockStatus struct {
 	InBestChain bool   `json:"in_best_chain"`
@@ -49,6 +51,23 @@ type Vin struct {
 	Sequence              int      `json:"sequence"`
 	Witness               []string `json:"witness"`
 	Prevout               *Vout    `json:"prevout"`
+
+	//Elements only
+	IsPegin  bool      `json:"is_pegin"`
+	Issuance *Issuance `json:"issuance"`
+}
+
+// Issuance represents issuance information for an Elements transaction.
+type Issuance struct {
+	AssetID               string  `json:"asset_id"`
+	IsReissuance          bool    `json:"is_reissuance"`
+	AssetBlindingNonce    string  `json:"asset_blinding_nonce"`
+	AssetEntropy          string  `json:"asset_entropy"`
+	ContractHash          string  `json:"contract_hash"`
+	AssetAmount           float64 `json:"assetamount,omitempty"`
+	AssetAmountCommitment string  `json:"assetamountcommitment,omitempty"`
+	TokenAmount           float64 `json:"tokenamount,omitempty"`
+	TokenAmountCommitment string  `json:"tokenamountcommitment,omitempty"`
 }
 
 type Vout struct {
