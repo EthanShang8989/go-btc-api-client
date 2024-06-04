@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/EthanShang8989/go-btc-api-client/pkg/btcclient"
+	"github.com/EthanShang8989/go-btc-api-client/btcclient"
 	"log"
 )
 

@@ -22,7 +22,7 @@ package main
 import (
 	"fmt"
 	"log"
-	"github.com/EthanShang8989/go-btc-api-client/pkg/btcclient"
+	"github.com/EthanShang8989/go-btc-api-client/btcclient"
 )
 
 func main() {
