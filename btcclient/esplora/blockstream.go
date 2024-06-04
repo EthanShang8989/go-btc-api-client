@@ -21,8 +21,8 @@ func NewClient(url string) *EsploraClient {
 // sendRequest sends an HTTP request and parses the response
 func (c *EsploraClient) sendRequest(endpoint string, result interface{}) error {
 	emptyMap := make(map[string]string)
-	c.Client.SendRequest(endpoint, emptyMap, result)
-	return nil
+	err := c.Client.SendRequest(endpoint, emptyMap, result)
+	return err
 }
 
 // sendRequestForBinary sends an HTTP request and returns the binary response
